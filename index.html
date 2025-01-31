@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Prefix and Suffix Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001f3f;
+            background-image: url('https://tem.fi/documents/1410877/15007476/avaruus-1000.jpg/b018147f-a011-6d17-a6e5-eb520d2cc104?t=1712161835434&imagePreview=1');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+        .container {
+            background-color: rgba(0, 0, 51, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #001f3f;
+            color: #fff;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function generateRandom() {
+            const prefixes = document.getElementById("prefixes").value.split(",");
+            const suffixes = document.getElementById("suffixes").value.split(",");
+            const prefixCount = parseInt(document.getElementById("prefixCount").value);
+            const suffixCount = parseInt(document.getElementById("suffixCount").value);
+            let result = "";
+
+            for (let i = 0; i < prefixCount; i++) {
+                result += prefixes[Math.floor(Math.random() * prefixes.length)];
+            }
+
+            for (let i = 0; i < suffixCount; i++) {
+                result += suffixes[Math.floor(Math.random() * suffixes.length)];
+            }
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Random PLANET NAME Generator</h1>
+        <label for="prefixes">Enter Prefixes (comma separated):</label>
+        <input type="text" id="prefixes" value="Zar, Xan, Vor, Kry, Lir, Nor, Bel, Gal, Zyl, Ter, Ark, Eld">
+        <label for="suffixes">Enter Suffixes (comma separated):</label>
+        <input type="text" id="suffixes" value="dor, mar, ria, tus, lon, via, zon, tar, thus, nix, mir, thus">
+        <label for="prefixCount">Number of Prefixes:</label>
+        <input type="number" id="prefixCount" min="0" value="1">
+        <label for="suffixCount">Number of Suffixes:</label>
+        <input type="number" id="suffixCount" min="0" value="1">
+        <button onclick="generateRandom()">Generate PLANET NAME</button>
+        <p id="result"></p>
+    </div>
+</body>
+</html>
+
